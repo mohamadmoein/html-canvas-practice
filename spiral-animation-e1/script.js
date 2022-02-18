@@ -37,9 +37,10 @@ class FlowFieldEffect {
 	#lastTime = 0
 	#interval = 1000/60
 	#timer = 0
-	#cellSize = 10
+	#cellSize = 15
 	#gredient
 	#radius = 5
+	#vr = 0.03
 
 	constructor(ctx, width, height) {
 		this.#ctx = ctx
@@ -58,10 +59,16 @@ class FlowFieldEffect {
 	}
 
 	#drawLine(x, y, angle) {
-		const length = 300
+		const dx = x - mouse.x
+		const dy = y - mouse.y
+		let dist = (dx * dx + dy * dy)
+		const maxDist = 500000
+		if (dist > maxDist) dist = maxDist
+		else if (dist < 50000) dist = 50000
+		const length = dist/10000
 		this.#ctx.beginPath()
 		this.#ctx.moveTo(x, y)
-		this.#ctx.lineTo(x + Math.cos(angle) * 30, y + Math.sin(angle) * 30)
+		this.#ctx.lineTo(x + Math.cos(angle) * length, y + Math.sin(angle) * length)
 		this.#ctx.stroke()
 	}
 
@@ -71,10 +78,14 @@ class FlowFieldEffect {
 
 		if (this.#timer > this.#interval) {
 			this.#ctx.clearRect(0, 0, this.#width, this.#height)
+			this.#radius += this.#vr
+			if (this.#radius > 6 || this.#radius < -6) {
+				this.#vr *= -1
+			}
 
 			for (let y = 0; y < this.#height; y += this.#cellSize) {
 				for (let x = 0; x < this.#width; x += this.#cellSize) {
-					const angle = (Math.cos(x * 0.01) + Math.sin(y * 0.01)) * 5
+					const angle = (Math.cos(x * 0.01) + Math.sin(y * 0.01)) * this.#radius
 					this.#drawLine(x, y, angle)				
 				}
 			}
