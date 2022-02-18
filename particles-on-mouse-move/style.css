@@ -5,7 +5,7 @@
 }
 
 #my-canvas {
-	position: absolute;
+	position: absolute; /* to make sure it's always on top */
 	z-index: -1;
 	background: black;
 	top: 0;

@@ -95,22 +95,24 @@ function animate() {
 
 animate()
 
-/* To store canvas movements as mp4 video file, uncomment this section and video tag in index.html file */
+// To store canvas movements as mp4 video file,
+// uncomment this section and video tag in index.html file
+/*
+var videoStream = canvas.captureStream(60);
+var mediaRecorder = new MediaRecorder(videoStream);
 
-// var videoStream = canvas.captureStream(60);
-// var mediaRecorder = new MediaRecorder(videoStream);
+var chunks = [];
+mediaRecorder.ondataavailable = function(e) {
+  chunks.push(e.data);
+};
 
-// var chunks = [];
-// mediaRecorder.ondataavailable = function(e) {
-//   chunks.push(e.data);
-// };
+mediaRecorder.onstop = function(e) {
+  var blob = new Blob(chunks, { 'type' : 'video/mp4' });
+  chunks = [];
+  var videoURL = URL.createObjectURL(blob);
+  video.src = videoURL;
+};
 
-// mediaRecorder.onstop = function(e) {
-//   var blob = new Blob(chunks, { 'type' : 'video/mp4' });
-//   chunks = [];
-//   var videoURL = URL.createObjectURL(blob);
-//   video.src = videoURL;
-// };
-
-// mediaRecorder.start();
-// setTimeout(function (){ mediaRecorder.stop(); }, 5000);
+mediaRecorder.start();
+setTimeout(function (){ mediaRecorder.stop(); }, 5000);
+*/
