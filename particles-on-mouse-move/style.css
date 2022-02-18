@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#my-canvas {
+	position: absolute;
+	z-index: -1;
+	background: black;
+	top: 0;
+	left: 0;
+}
