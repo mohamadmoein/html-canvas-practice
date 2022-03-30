@@ -1,0 +1,19 @@
+{
+  "name": "html-canvas-practice",
+  "version": "1.0.0",
+  "description": "Practicing HTML5 Canvas graphics and animations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamadmoein/html-canvas-practice.git"
+  },
+  "author": "Mohamad Moein Hajesmaeili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamadmoein/html-canvas-practice/issues"
+  },
+  "homepage": "https://github.com/mohamadmoein/html-canvas-practice#readme"
+}
